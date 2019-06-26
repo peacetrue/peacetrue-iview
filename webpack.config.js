@@ -31,29 +31,13 @@ module.exports = {
             commonjs2: 'vue',
             amd: 'vue'
         },
-        'iview/dist/iview': {
-            root: 'iview',
-            commonjs: 'iview',
-            commonjs2: 'iview',
-            amd: 'iview'
-        },
+        'iview/dist/iview': 'iview',
         'lodash': {
             root: '_',
             commonjs: 'lodash',
             commonjs2: 'lodash',
             amd: 'lodash'
         },
-        'qs': {
-            root: 'Qs',
-            commonjs: 'qs',
-            commonjs2: 'qs',
-            amd: 'qs'
-        },
-        'axios': {
-            root: 'axios',
-            commonjs: 'axios',
-            commonjs2: 'axios',
-            amd: 'axios'
-        },
+        'axios': 'axios',
     }
 };

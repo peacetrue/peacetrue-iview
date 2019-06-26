@@ -1,6 +1,6 @@
 {
   "name": "peacetrue-iview",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "extend iview to add some components",
   "type": "module",
   "private": false,
@@ -27,7 +27,12 @@
   "directories": {
     "test": "test"
   },
-  "keywords": [],
+  "keywords": [
+    "vue",
+    "iview",
+    "table",
+    "page"
+  ],
   "devDependencies": {
     "webpack": "^4.34.0",
     "webpack-cli": "^3.3.4",

@@ -1,11 +1,4 @@
-// let Form = require('iview/src/components/form');
-// let FormItem = require('iview/src/components/form-item');
-// let Input = require('iview/src/components/input');
-// let Icon = require('iview/src/components/icon');
-// let Button = require('iview/src/components/button');
-// let Table = require('iview/src/components/table');
-// let Page = require('iview/src/components/page');
-let {Form, FormItem, Input, Icon, Button, Table, Page} = require('iview/dist/iview');
+let {Table, Page} = require('iview/dist/iview');
 let Lodash = require('lodash');
 let Axios = require('axios');
 
@@ -90,7 +83,7 @@ module.exports = {
         },
     },
     components: {
-        Form, FormItem, Input, Icon, Button, Table, Page,
+        Table, Page,
     },
     created() {
         this.initSort();
