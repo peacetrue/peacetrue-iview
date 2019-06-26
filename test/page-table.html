@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>page table test</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="../node_modules/iview/dist/styles/iview.css"/>
+    <script src="../node_modules/iview/dist/iview.js"></script>
+    <script src="../node_modules/lodash/lodash.js"></script>
+    <script src="../node_modules/axios/dist/axios.js"></script>
+    <script src="../dist/page-table.js"></script>
+</head>
+<body>
+<div id="container">
+    <page-table url="http://localhost:8081/tasks" :columns="columns" :filter="filter"></page-table>
+</div>
+<script>
+    let vue = new Vue({
+        el: '#container',
+        data() {
+            return {
+                columns: [
+                    {title: '任务组标识', key: 'groupId', width: 200, tooltip: true},
+                    {title: '任务标识', key: 'id', width: 120, tooltip: true},
+                    {title: '输入参数', key: 'input', width: 200, tooltip: true},
+                    {title: '执行内容', key: 'body', width: 200, tooltip: true},
+                    {title: '状态', key: 'stateCode', width: 100},
+                    {title: '输出结果', key: 'output', width: 200, tooltip: true},
+                    {title: '异常信息', key: 'exception', width: 100, tooltip: true},
+                    {title: '花费时间', key: 'duration', width: 100},
+                    {title: '依赖任务', key: 'dependentIds', width: 100},
+                    {title: '创建时间', key: 'createdTime', width: 130, sortable: 'custom', tooltip: true, sortType: 'desc'},
+                    {title: '操作', width: 130, fixed: 'right', render: (h, r) => {return this.renderOperate(h, r);}},
+                ]
+            };
+        },
+        methods: {
+            filter(data) {
+                return data.data;
+            },
+            renderOperate(h, r) {
+
+            }
+        },
+        components: {
+            PageTable
+        }
+    });
+</script>
+</body>
+</html>
