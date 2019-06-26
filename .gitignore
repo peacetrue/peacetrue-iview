@@ -24,3 +24,5 @@
 /local/*
 /dataSources/*
 rebel.xml
+/node_modules/*
+/dist/*
