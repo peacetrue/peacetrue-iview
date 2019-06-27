@@ -1,6 +1,6 @@
 {
   "name": "peacetrue-iview",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "extend iview to add some components",
   "type": "module",
   "private": false,
@@ -16,14 +16,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/peacetrue/iview-extend.git"
+    "url": "git+https://github.com/peacetrue/peacetrue-iview.git"
   },
   "author": "xiayx",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/peacetrue/iview-extend/issues"
+    "url": "https://github.com/peacetrue/peacetrue-iview/issues"
   },
-  "homepage": "https://github.com/peacetrue/iview-extend#readme",
+  "homepage": "https://github.com/peacetrue/peacetrue-iview#readme",
   "directories": {
     "test": "test"
   },
