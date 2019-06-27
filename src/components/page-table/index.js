@@ -28,7 +28,7 @@ module.exports = {
     </div>
     `,
     props: {
-        url: {type: String, required: true},
+        url: {type: [String, Function], required: true},
         params: {type: Object, required: false, default() {return {};}},
         filter: {type: Function, required: false, default(data) {return data;}},
         columns: {type: Array, required: true,}
@@ -55,7 +55,10 @@ module.exports = {
         query(reset) {
             if (reset) this.innerParams.page = this.backup.page;
             this.loading = true;
-            return Axios.get(this.url, {params: Lodash.extend({}, this.innerParams, this.params)})
+            let params = Lodash.extend({}, this.innerParams, this.params);
+            return (typeof this.url === 'string'
+                ? Axios.get(this.url, {params: params})
+                : this.url(params))
                 .then(response => {
                     this.loading = false;
                     this.result = this.filter(response.data);
