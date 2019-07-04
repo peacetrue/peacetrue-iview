@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>page table test</title>
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="../../node_modules/iview/dist/styles/iview.css"/>
+    <script src="../../node_modules/iview/dist/iview.js"></script>
+    <script src="../../node_modules/lodash/lodash.js"></script>
+    <!--    <link rel="stylesheet" href="../../dist/components/upload/style.css"/>-->
+    <script src="../../dist/components/videos-tile/index.js"></script>
+    <style>
+        .item-col > video {
+            width: 200px;
+            height: 200px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <videos-tile :items="items"></videos-tile>
+</div>
+<script>
+    let vue = new Vue({
+        el: '#container',
+        data: {
+            items: [
+                'https://au32-detection-test.oss-cn-beijing.aliyuncs.com/2019/07/03/9bc98ddd-9150-496b-8503-13a164d9ade0-bcyo-1560836378982450.MP4',
+                'https://au32-detection-test.oss-cn-beijing.aliyuncs.com/2019/07/03/9bc98ddd-9150-496b-8503-13a164d9ade0-bcyo-1560836378982450.MP4',
+                'https://au32-detection-test.oss-cn-beijing.aliyuncs.com/2019/07/03/9bc98ddd-9150-496b-8503-13a164d9ade0-bcyo-1560836378982450.MP4',
+            ]
+        },
+        methods: {
+            formatData(value) {
+                return {name: value.data, url: `https://au32-detection-test.oss-cn-beijing.aliyuncs.com/${value.data}`}
+            }
+        },
+        components: {
+            VideosTile: PeaceIview.VideosTile
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>page table test</title>
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="../../node_modules/iview/dist/styles/iview.css"/>
+    <script src="../../node_modules/iview/dist/iview.js"></script>
+    <script src="../../node_modules/lodash/lodash.js"></script>
+    <!--    <link rel="stylesheet" href="../../dist/components/upload/style.css"/>-->
+    <script src="../../dist/components/images-tile/index.js"></script>
+    <style>
+        .item-col > img {
+            width: 200px;
+            height: 200px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <images-tile :items="items"></images-tile>
+</div>
+<script>
+    let vue = new Vue({
+        el: '#container',
+        data: {
+            items: [
+                'https://au32-detection-test.oss-cn-beijing.aliyuncs.com/2019/07/04/b402c98b-d24c-4c3a-ab78-6be568946688-2lrz-imageGoods.png',
+                'https://au32-detection-test.oss-cn-beijing.aliyuncs.com/2019/07/04/b402c98b-d24c-4c3a-ab78-6be568946688-2lrz-imageGoods.png',
+                'https://au32-detection-test.oss-cn-beijing.aliyuncs.com/2019/07/04/b402c98b-d24c-4c3a-ab78-6be568946688-2lrz-imageGoods.png',
+            ]
+        },
+        methods: {
+        },
+        components: {
+            ImagesTile: PeaceIview.ImagesTile
+        }
+    });
+</script>
+</body>
+</html>

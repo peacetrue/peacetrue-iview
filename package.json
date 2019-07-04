@@ -1,17 +1,15 @@
 {
   "name": "peacetrue-iview",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "extend iview to add some components",
   "type": "module",
   "private": false,
   "files": [
     "src",
     "dist",
-    "test",
-    "examples"
+    "test"
   ],
   "scripts": {
-    "examples": "open ./examples/index.html",
     "build": "webpack"
   },
   "repository": {

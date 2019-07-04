@@ -9,6 +9,7 @@ module.exports = Lodash.merge({}, Upload, {
     props: {
         text: {type: String, required: false, default: '选择视频'},
         format: {type: Array, required: false, default() {return ['mp4', 'mkv', 'rmvb']},},
+        maxSize: {type: Number, default: 1024 * 5},
     }
 });
 

@@ -11,6 +11,9 @@ module.exports = {
         'Upload': './src/components/upload/index.js',
         'ImageUpload': './src/components/image-upload/index.js',
         'VideoUpload': './src/components/video-upload/index.js',
+        'ItemsTile': './src/components/items-tile/index.js',
+        'VideosTile': './src/components/videos-tile/index.js',
+        'ImagesTile': './src/components/images-tile/index.js',
     },
     devtool: 'inline-source-map',
     module: {
@@ -52,13 +55,13 @@ module.exports = {
             commonjs2: 'lodash',
             amd: 'lodash'
         },
-        'vuedraggable': 'vuedraggable',
-        'sortablejs': {
-            root: 'Sortable',
-            commonjs: 'sortable',
-            commonjs2: 'sortable',
-            amd: 'sortable'
-        },
+        // 'vuedraggable': 'vuedraggable',
+        // 'sortablejs': {
+        //     root: 'Sortable',
+        //     commonjs: 'sortable',
+        //     commonjs2: 'sortable',
+        //     amd: 'sortable'
+        // },
         '../upload': {
             root: ['PeaceIview', 'Upload'],
             commonjs: 'peacetrue-iview/src/components/upload',
