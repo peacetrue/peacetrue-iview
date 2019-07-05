@@ -19,8 +19,8 @@ module.exports = {
               :show-total="true"
               :show-sizer="true"
               :total="result.totalElements"
-              :page-size="innerParams.size"
-              :current="innerParams.page+1"
+              :page-size="params.size"
+              :current="params.page+1"
               size="small"
               @on-change="onPageChange"
               @on-page-size-change="onPageSizeChange">
@@ -29,59 +29,64 @@ module.exports = {
     `,
     props: {
         url: {type: [String, Function], required: true},
-        params: {type: Object, required: false, default() {return {};}},
-        filter: {type: Function, required: false, default(data) {return data;}},
+        params: {type: Object, required: false, default() {return {page: 0, size: 10};}},
+        successFormat: {type: Function, required: false, default(data) {return data;}},
+        errorFormat: {type: Function, required: false, default(data) {return data;}},
         columns: {type: Array, required: true,}
+    },
+    model: {
+        prop: 'params',
     },
     data() {
         return {
-            //查询参数
-            innerParams: {page: 0, size: 10,},
-            //查询结果
             result: {totalElements: 0, content: []},
             loading: false,//是否加载中
         };
     },
     methods: {
         initSort() {
-            this.columns.filter(t => t.sortType).forEach(t => {
-                this.innerParams.sort = t.key + ',' + t.sortType;
+            !this.params.sort
+            && this.columns.filter(t => t.sortType).forEach(t => {
+                this.params.sort = t.key + ',' + t.sortType;
             });
         },
         backupParams() {
             //保存初始化副本，重置时使用
-            this.backup = Lodash.extend({}, this.innerParams, this.params);
+            this.backup = Lodash.merge({}, this.params);
         },
         query(reset) {
-            if (reset) this.innerParams.page = this.backup.page;
+            if (reset) this.params.page = this.backup.page;
             this.loading = true;
-            let params = Lodash.extend({}, this.innerParams, this.params);
+            let params = Lodash.merge({}, this.params);
             return (typeof this.url === 'string'
                 ? Axios.get(this.url, {params: params})
                 : this.url(params))
                 .then(response => {
                     this.loading = false;
-                    this.result = this.filter(response.data);
+                    this.result = this.successFormat(response.data);
+                }, response => {
+                    this.$Message.error(this.errorFormat(response))
                 })
                 .finally(() => this.loading = false);
         },
         onPageChange(page) {
-            this.innerParams.page = page - 1;
+            this.params.page = page - 1;
             this.query();
         },
         onPageSizeChange(size) {
-            this.innerParams.size = size;
+            this.params.size = size;
             this.query(true);
         },
         onSortChange(options) {
-            this.innerParams.sort = options.order === 'normal'
-                ? this.backup.sort : options.key + ',' + options.order;
+            this.params.sort = options.order === 'normal'
+                ? this.backup.sort
+                : options.key + ',' + options.order;
             return this.query(true);
         },
         appendLocationParams() {
             let params = new URLSearchParams(location.search);
             [...params.keys()].forEach(key => {
-                this.innerParams[key] = params.get(key);
+                this.params[key] = params.get(key);
             });
         },
     },
@@ -91,6 +96,7 @@ module.exports = {
     created() {
         this.initSort();
         this.appendLocationParams();
+        Lodash.defaults(this.params, {page: 0, size: 10});
         this.backupParams();
         this.query();
     }

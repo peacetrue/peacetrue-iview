@@ -27,3 +27,9 @@ PeaceIview
 == ImageUpload
 
 == VideoUpload
+
+== ImagesTile
+使用Row、Col等距平铺图片
+
+== VideosTile
+使用Row、Col等距平铺视频

@@ -8,17 +8,21 @@
     <script src="../node_modules/iview/dist/iview.js"></script>
     <script src="../node_modules/lodash/lodash.js"></script>
     <script src="../node_modules/axios/dist/axios.js"></script>
-    <script src="../dist/page-table.js"></script>
+    <script src="../dist/components/page-table/index.js"></script>
+    <script src="./page-table.js"></script>
 </head>
 <body>
 <div id="container">
-    <page-table url="http://localhost:8081/tasks" :columns="columns" :filter="filter"></page-table>
+    <page-table ref="pageTable" :url="url" :columns="columns" :success-format="filter" v-model="params"></page-table>
 </div>
 <script>
     let vue = new Vue({
         el: '#container',
         data() {
             return {
+                url: () => Promise.resolve(data),
+                // url: 'http://localhost:8081/tasks',
+                params: {size: 1},
                 columns: [
                     {title: '任务组标识', key: 'groupId', width: 200, tooltip: true},
                     {title: '任务标识', key: 'id', width: 120, tooltip: true},
@@ -36,14 +40,14 @@
         },
         methods: {
             filter(data) {
-                return data.data;
+                return data.data || data;
             },
             renderOperate(h, r) {
 
             }
         },
         components: {
-            PageTable
+            PageTable: PeaceIview.PageTable
         }
     });
 </script>

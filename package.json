@@ -1,6 +1,6 @@
 {
   "name": "peacetrue-iview",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "extend iview to add some components",
   "type": "module",
   "private": false,
