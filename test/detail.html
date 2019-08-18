@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>page table test</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="../node_modules/iview/dist/styles/iview.css"/>
+    <script src="../node_modules/iview/dist/iview.js"></script>
+    <!--    <script src="../node_modules/sortablejs/Sortable.js"></script>-->
+    <script src="../node_modules/lodash/lodash.js"></script>
+    <!--    <script src="../node_modules/vuedraggable/dist/vuedraggable.umd.js"></script>-->
+    <link rel="stylesheet" href="../dist/components/detail/style.css"/>
+    <script src="../dist/components/detail/index.js"></script>
+</head>
+<body>
+<div id="container">
+    <detail :data="data" v-if="data.id">
+        <row>
+            <detail-item label="模块编码" name="moduleCode"></detail-item>
+            <detail-item label="记录标识">
+                <a v-if="data.recordId" :href="data.recordHref" target="_blank">{{data.recordId}}</a>
+                <template v-else>--</template>
+            </detail-item>
+        </row>
+        <row>
+            <detail-item label="操作编码" name="operateCode"></detail-item>
+            <detail-item label="操作描述" name="description"></detail-item>
+            <detail-item label="耗时(秒)" name="duration"></detail-item>
+        </row>
+        <row>
+            <detail-item label="创建时间" name="createdTime"></detail-item>
+            <detail-item label="创建者标识" name="creatorId"></detail-item>
+        </row>
+        <detail-header :size="3">输入参数（最长2046，超过被截断，截断后无法按正常JSON展示）</detail-header>
+        <div style="line-break: anywhere;word-break: break-word"></div>
+        <detail-header :size="3">输出结果（最长2046，超过被截断，截断后无法按正常JSON展示）</detail-header>
+        <div style="line-break: anywhere;word-break: break-word"></div>
+        <detail-header :size="3">异常信息（最长1022，超过被截断）</detail-header>
+        <div style="line-break: anywhere;word-break: break-word">{{data.exception||'--'}}</div>
+    </detail>
+</div>
+<script>
+    let vue = new Vue({
+        el: '#container',
+        data: {
+            data: {
+                id: 1, moduleCode: 'Log', recordId: 1, operateCode: 'add', description: '新增', duration: 10000, createdTime: '2019-01-01', creatorId: 1
+            }
+        },
+        methods: {},
+        components: {...PeaceIview.Detail}
+    });
+</script>
+</body>
+</html>

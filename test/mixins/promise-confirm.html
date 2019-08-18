@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>page table test</title>
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="../../node_modules/iview/dist/styles/iview.css"/>
+    <script src="../../node_modules/iview/dist/iview.js"></script>
+    <script src="../../dist/mixins/promise-confirm.js"></script>
+</head>
+<body>
+<div id="container">
+    <fieldset>
+        <legend>promiseConfirm</legend>
+        <button @click="promiseConfirm('提示','确认执行操作么？')">promiseConfirm</button>
+    </fieldset>
+</div>
+<script>
+    let vue = new Vue({
+        el: '#container',
+        mixins: [PeaceIview.PromiseConfirm]
+    });
+</script>
+</body>
+</html>

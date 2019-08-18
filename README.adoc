@@ -15,6 +15,11 @@ v1.0, 2019-06-26: SNAPSHOT
 * https://webpack.js.org/configuration/devtool/
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
 
+== 技术结构
+* 可以整体打包
+* 也可以单独打包，每次打包所有模块，耗时太长
+
+
 == 全局变量
 PeaceIview
 
@@ -33,3 +38,6 @@ PeaceIview
 
 == VideosTile
 使用Row、Col等距平铺视频
+
+== Util
+

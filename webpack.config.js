@@ -2,11 +2,11 @@ const path = require('path');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
-
 module.exports = {
     mode: 'development',
     // mode: 'production',
     entry: {
+        'Detail': './src/components/detail/index.js',
         'PageTable': './src/components/page-table/index.js',
         'Upload': './src/components/upload/index.js',
         'ImageUpload': './src/components/image-upload/index.js',
@@ -14,8 +14,9 @@ module.exports = {
         'ItemsTile': './src/components/items-tile/index.js',
         'VideosTile': './src/components/videos-tile/index.js',
         'ImagesTile': './src/components/images-tile/index.js',
+        'PromiseConfirm': './src/mixins/promise-confirm.js',
     },
-    devtool: 'inline-source-map',
+    // devtool: 'inline-source-map',
     module: {
         rules: [
             {test: /\.css$/, use: ['style-loader', 'css-loader']},
@@ -26,6 +27,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new CopyPlugin([
+            {from: './src/components/detail/style.css', to: './components/detail/style.css'},
             {from: './src/components/upload/style.css', to: './components/upload/style.css'},
             {from: './src/components/video-upload/style.css', to: './components/video-upload/style.css'},
         ]),
@@ -33,8 +35,9 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename(chunkData) {
-            let name = chunkData.chunk.name.replace(/([A-Z])/g, (value) => '-' + value.toLowerCase()).substr(1);
-            return `components/${name}/index.js`;
+            // console.info('chunkData:', chunkData)
+            // let name = chunkData.chunk.name.replace(/([A-Z])/g, (value) => '-' + value.toLowerCase()).substr(1);
+            return chunkData.chunk.entryModule.id.substring("./src/".length);
         },
         library: ['PeaceIview', '[name]'],
         libraryExport: '',
@@ -49,7 +52,8 @@ module.exports = {
             amd: 'vue'
         },
         'iview/dist/iview': 'iview',
-        'lodash': {
+        axios: 'axios',
+        lodash: {
             root: '_',
             commonjs: 'lodash',
             commonjs2: 'lodash',
