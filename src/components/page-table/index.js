@@ -12,6 +12,7 @@ module.exports = {
                :data="result.content"
                size="small"
                @on-sort-change="onSortChange"
+               @on-selection-change="onSelectionChange"
                stripe border ellipsis>
         </Table>
         <Page ref="page" style="text-align: right"
@@ -41,6 +42,7 @@ module.exports = {
         return {
             result: {totalElements: 0, content: []},
             loading: false,//是否加载中
+            selection: [],
         };
     },
     methods: {
@@ -76,6 +78,9 @@ module.exports = {
         onPageSizeChange(size) {
             this.params.size = size;
             this.query(true);
+        },
+        onSelectionChange(selection) {
+            this.selection.splice(0, this.selection.length, ...selection);
         },
         onSortChange(options) {
             this.params.sort = options.order === 'normal'
