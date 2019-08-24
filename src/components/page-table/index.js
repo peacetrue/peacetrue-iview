@@ -31,7 +31,7 @@ module.exports = {
     props: {
         url: {type: [String, Function], required: true},
         params: {type: Object, required: false, default() {return {page: 0, size: 10};}},
-        successFormat: {type: Function, required: false, default(data) {return data;}},
+        successFormat: {type: Function, required: false, default(data) {return data.data;}},
         errorFormat: {type: Function, required: false, default(data) {return data;}},
         columns: {type: Array, required: true,}
     },
@@ -65,7 +65,7 @@ module.exports = {
                 : this.url(params))
                 .then(response => {
                     this.loading = false;
-                    this.result = this.successFormat(response.data);
+                    this.result = this.successFormat(response);
                 }, response => {
                     this.$Message.error(this.errorFormat(response))
                 })
