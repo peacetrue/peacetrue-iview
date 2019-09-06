@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("peacetrue-iview/src/components/upload"), require("lodash"));
+		module.exports = factory(require("peacetrue-iview/src/components/upload"), require("iview"), require("lodash"));
 	else if(typeof define === 'function' && define.amd)
-		define(["peacetrue-iview/src/components/upload", "lodash"], factory);
+		define(["peacetrue-iview/src/components/upload", "iview", "lodash"], factory);
 	else if(typeof exports === 'object')
-		exports["VideoUpload"] = factory(require("peacetrue-iview/src/components/upload"), require("lodash"));
+		exports["VideoUpload"] = factory(require("peacetrue-iview/src/components/upload"), require("iview"), require("lodash"));
 	else
-		root["PeaceIview"] = root["PeaceIview"] || {}, root["PeaceIview"]["VideoUpload"] = factory(root["PeaceIview"]["Upload"], root["_"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE__upload__, __WEBPACK_EXTERNAL_MODULE_lodash__) {
+		root["PeaceIview"] = root["PeaceIview"] || {}, root["PeaceIview"]["VideoUpload"] = factory(root["PeaceIview"]["Upload"], root["iview"], root["_"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE__upload__, __WEBPACK_EXTERNAL_MODULE_iview_dist_iview__, __WEBPACK_EXTERNAL_MODULE_lodash__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -114,7 +114,18 @@ eval("module.exports = __WEBPACK_EXTERNAL_MODULE__upload__;\n\n//# sourceURL=web
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("let Upload = __webpack_require__(/*! ../upload */ \"../upload\");\nlet Lodash = __webpack_require__(/*! lodash */ \"lodash\");\n\nmodule.exports = Lodash.merge({}, Upload, {\n    name: 'VideoUpload',\n    template: Upload.template.replace(\n        '<slot name=\"content\" class=\"upload-item-content\" :item=\"item\"></slot>',\n        '<video :src=\"item.url\" class=\"upload-item-content\" controls></video>'),\n    props: {\n        text: {type: String, required: false, default: '选择视频'},\n        format: {type: Array, required: false, default() {return ['mp4', 'mkv', 'rmvb']},},\n        maxSize: {type: Number, default: 1024 * 5},\n    }\n});\n\n\n\n//# sourceURL=webpack://PeaceIview.%5Bname%5D/./src/components/video-upload/index.js?");
+eval("let {Modal} = __webpack_require__(/*! iview/dist/iview */ \"iview/dist/iview\");\nlet Upload = __webpack_require__(/*! ../upload */ \"../upload\");\nlet Lodash = __webpack_require__(/*! lodash */ \"lodash\");\n\nmodule.exports = Lodash.merge({}, Upload, {\n    name: 'VideoUpload',\n    template:\n        `<div>\n            ${Upload.template.replace(\n            '<slot name=\"content\" class=\"upload-item-content\" :item=\"item\"></slot>',\n            '<video :src=\"item.url\" class=\"upload-item-content\" controls></video>')}\n            <Modal v-model=\"visible\" footer-hide fullscreen mask-closable title=\"视频\">\n                <video v-if=\"url\" :src=\"url\" class=\"upload-item-content\" style=\"width: 100%;height:100%\" controls autoplay></video>\n            </Modal>\n        </div>`,\n    props: {\n        text: {type: String, required: false, default: '选择视频'},\n        format: {type: Array, required: false, default() {return ['mp4', 'mkv', 'rmvb']},},\n        maxSize: {type: Number, default: 1024 * 5},\n    },\n    data() {\n        return {\n            currentItems: [],\n            visible: false,\n            url: null,\n        };\n    },\n    methods: {\n        /**查看*/\n        view(item) {\n            this.visible = true;\n            this.url = item.url;\n        },\n    },\n    components: {\n        Modal,\n    }\n});\n\n\n\n//# sourceURL=webpack://PeaceIview.%5Bname%5D/./src/components/video-upload/index.js?");
+
+/***/ }),
+
+/***/ "iview/dist/iview":
+/*!************************!*\
+  !*** external "iview" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = __WEBPACK_EXTERNAL_MODULE_iview_dist_iview__;\n\n//# sourceURL=webpack://PeaceIview.%5Bname%5D/external_%22iview%22?");
 
 /***/ }),
 
