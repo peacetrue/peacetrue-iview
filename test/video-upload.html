@@ -6,9 +6,9 @@
     <script src="../node_modules/vue/dist/vue.js"></script>
     <link rel="stylesheet" href="../node_modules/iview/dist/styles/iview.css"/>
     <script src="../node_modules/iview/dist/iview.js"></script>
-<!--    <script src="../node_modules/sortablejs/Sortable.js"></script>-->
+    <!--    <script src="../node_modules/sortablejs/Sortable.js"></script>-->
     <script src="../node_modules/lodash/lodash.js"></script>
-<!--    <script src="../node_modules/vuedraggable/dist/vuedraggable.umd.js"></script>-->
+    <!--    <script src="../node_modules/vuedraggable/dist/vuedraggable.umd.js"></script>-->
     <link rel="stylesheet" href="../dist/components/upload/style.css"/>
     <link rel="stylesheet" href="../dist/components/video-upload/style.css"/>
     <script src="../dist/components/upload/index.js"></script>
@@ -16,11 +16,18 @@
 </head>
 <body>
 <div id="container">
-    <video-upload action="http://localhost:8088/file" :format-data="formatData"></video-upload>
+    <video-upload action="http://localhost:8092/file" :format-data="formatData" :items="items"></video-upload>
 </div>
 <script>
     let vue = new Vue({
         el: '#container',
+        data() {
+            return {
+                items: [
+                    {id: '8f76a4b257d9', url: 'https://au32-detection.oss-cn-beijing.aliyuncs.com/transcode/2019/09/06/s2dr5jckf7l-45f22c70-d079-11e9-bba0-8f76a4b257d9.MP4'}
+                ]
+            }
+        },
         methods: {
             formatData(value) {
                 return {name: value.data, url: `https://au32-detection-test.oss-cn-beijing.aliyuncs.com/${value.data}`}
