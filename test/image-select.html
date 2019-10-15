@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>image-select</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="../node_modules/iview/dist/styles/iview.css"/>
+    <script src="../node_modules/iview/dist/iview.js"></script>
+    <link rel="stylesheet" href="../dist/components/image-select/style.css"/>
+    <script src="../dist/components/image-select/index.js"></script>
+    <script></script>
+</head>
+<body>
+
+<div id="container">
+    <image-select v-model="value" :items="items" prefix="https://au32-detection-test.oss-cn-beijing.aliyuncs.com"></image-select>
+</div>
+
+</body>
+<script>
+    let vue = new Vue({
+        el: '#container',
+        data: {
+            value: null,
+            items: [
+                "/2019/07/04/b402c98b-d24c-4c3a-ab78-6be568946688-2lrz-imageGoods.png",
+                "/2019/10/15/189vqk25blb-67599050-eef2-11e9-9fd9-e5ff1d672f33-magazine-unlock-02-2.3.2172-6149DE07197869EEAE58D0FF07EA5FFA.jpg",
+                "/2019/07/04/b402c98b-d24c-4c3a-ab78-6be568946688-2lrz-imageGoods2.png"
+            ]
+        },
+        methods: {},
+        components: {
+            ImageSelect: PeaceIview.ImageSelect
+        }
+    });
+
+</script>
+</html>

@@ -1,0 +1,45 @@
+.image-select {
+    width: 64px;
+    height: 64px;
+    position: relative;
+    text-align: center;
+    line-height: 64px;
+}
+
+.image-select > img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.image-select > .image-select-cover {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, .6);
+}
+
+.image-select:hover > .image-select-cover {
+    display: block;
+}
+
+.image-select > .image-select-cover > i {
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 0 2px;
+}
+
+.image-select-dialog img {
+    width: 100%;
+    height: 100%;
+}
+
+.image-select-dialog img.selected {
+    border: 1px solid chartreuse;
+}

@@ -14,6 +14,7 @@ module.exports = {
         'ItemsTile': './src/components/items-tile/index.js',
         'VideosTile': './src/components/videos-tile/index.js',
         'ImagesTile': './src/components/images-tile/index.js',
+        'ImageSelect': './src/components/image-select/index.js',
         'PromiseConfirm': './src/mixins/promise-confirm.js',
     },
     // devtool: 'inline-source-map',
@@ -30,6 +31,7 @@ module.exports = {
             {from: './src/components/detail/style.css', to: './components/detail/style.css'},
             {from: './src/components/upload/style.css', to: './components/upload/style.css'},
             {from: './src/components/video-upload/style.css', to: './components/video-upload/style.css'},
+            {from: './src/components/image-select/style.css', to: './components/image-select/style.css'},
         ]),
     ],
     output: {

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>image-select</title>
+    <link rel="stylesheet" href="../node_modules/iview/dist/styles/iview.css"/>
+    <style>
+        .image-select {
+            width: 64px;
+            height: 64px;
+            position: relative;
+            text-align: center;
+            line-height: 64px;
+        }
+
+        .image-select > img {
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .image-select > .image-select-cover {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, .6);
+        }
+
+        .image-select:hover > .image-select-cover {
+            display: block;
+        }
+
+        .image-select > .image-select-cover > i {
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            margin: 0 2px;
+        }
+
+    </style>
+    <script>
+        function switchImage() {
+
+        }
+    </script>
+</head>
+<body>
+<div class="image-select">
+    <img src="https://au32-detection-test.oss-cn-beijing.aliyuncs.com/2019/07/04/b402c98b-d24c-4c3a-ab78-6be568946688-2lrz-imageGoods.png">
+    <div class="image-select-cover">
+        <i class="ivu-icon ivu-icon-ios-eye-outline"></i>
+        <i class="ivu-icon ivu-icon-ios-trash-outline"></i>
+    </div>
+    <button>选择图片</button>
+</div>
+<button onclick="switchImage()">switch</button>
+</body>
+</html>
